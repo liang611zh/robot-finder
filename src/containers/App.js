@@ -34,15 +34,14 @@ class App extends Component {
         const filterRobots = this.state.robots.filter(robot =>{
             return robot.name.toLowerCase().includes(searchfiled.toLowerCase());
         })
-            if(robots.length === 0){
-                return(
+            return robots.length?(
                 <div className='tc'>
                     <h1>My Robots</h1>
                     <SearchBar onSearching={this.onSearching} />
                     <h1>Loading ...</h1>
-                </div>);
-            }else{
-            return(
+                </div>
+                )
+            :(
             <div className='tc'>
             <h1>My Robots</h1>
             <SearchBar onSearching={this.onSearching} />
@@ -50,7 +49,7 @@ class App extends Component {
             <CardList robots={filterRobots} />
             </Selectzone>
             </div>
-        );}
+            )
     }
 }
 export default App;
