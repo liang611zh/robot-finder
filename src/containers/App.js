@@ -15,7 +15,6 @@ class App extends Component {
     }
 
     componentDidMount(){
-        // fetch('https://jsonplaceholder.typicode.com/users')
         fetch('https://api.mlab.com/api/1/databases/my-robots/collections/user?apiKey=xfW3ay9Ni7BvyLG182hhaWxl5omrGhPB')
         .then(response=>{
             return response.json();
@@ -30,11 +29,13 @@ class App extends Component {
     }
 
     render() {
+
         const {searchfiled,robots}=this.state;
         const filterRobots = this.state.robots.filter(robot =>{
             return robot.name.toLowerCase().includes(searchfiled.toLowerCase());
         })
-            return robots.length?(
+        console.log(robots.length)
+            return !robots.length?(
                 <div className='tc'>
                     <h1>My Robots</h1>
                     <SearchBar onSearching={this.onSearching} />
